@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Support - For Healthier Students</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #7B68EE;
+            --color-secondary: #9370DB;
+            --color-accent: #FF6B9D;
+            --color-accent-light: #FFB3D1;
+            --color-text: #2C2C2C;
+            --color-text-light: #6B7280;
+            --color-bg: #F5F7FF;
+            --color-bg-alt: #FAFBFF;
+            --color-white: #FDF9F5;
+            --color-cream: #FAF6F0;
+            --color-warm: #F8F4ED;
+            --color-border: #E8E0D6;
+            --gradient-primary: linear-gradient(135deg, #7B68EE 0%, #9370DB 50%, #BA55D3 100%);
+            --gradient-accent: linear-gradient(135deg, #FF6B9D 0%, #FF8E9B 100%);
+            --gradient-hero: linear-gradient(135deg, #FDF9F5 0%, #FAF6F0 50%, #F8F4ED 100%);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--color-text);
+            background-color: var(--color-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-hero);
+            padding: 4rem 2rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            opacity: 0.1;
+            filter: blur(80px);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            opacity: 0.08;
+            filter: blur(70px);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-light);
+            font-weight: 400;
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        /* Statistics Section */
+        .stats {
+            padding: 6rem 2rem;
+            background-color: var(--color-white);
+            display: flex;
+            justify-content: center;
+        }
+
+        .stats-content {
+            max-width: 1000px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .stats-chart {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circular-chart {
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+
+        .circular-chart svg {
+            transform: rotate(-90deg);
+        }
+
+        .circular-chart circle {
+            fill: none;
+            stroke-width: 20;
+        }
+
+        .circular-chart .background {
+            stroke: var(--color-border);
+        }
+
+        .circular-chart .progress {
+            stroke: url(#gradient);
+            stroke-dasharray: 251.2;
+            stroke-dashoffset: 50.24;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+
+        .circular-chart .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stats-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .stats-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stats-description {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        /* Tools Section */
+        .tools {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--color-warm) 0%, var(--color-cream) 100%);
+        }
+
+        .tools-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .tools-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 4px solid #000000;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            filter: grayscale(30%) contrast(1.1);
+        }
+
+        .tools-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .tools-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tools-description {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        .tools-extra {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* Resources Section */
+        .resources {
+            padding: 6rem 2rem;
+            background-color: var(--color-white);
+        }
+
+        .resources-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .resources-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .resource-card {
+            background-color: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(123, 104, 238, 0.15);
+            border-color: var(--color-secondary);
+        }
+
+        .resource-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .resource-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 3px solid #000000;
+            filter: grayscale(30%) contrast(1.1);
+        }
+
+        .resource-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .resource-description {
+            font-size: 1rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-content,
+            .stats-content,
+            .tools-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .tools-image {
+                height: 400px;
+            }
+
+            .circular-chart {
+                width: 250px;
+                height: 250px;
+            }
+
+            .circular-chart .percentage {
+                font-size: 3rem;
+            }
+
+            .stats-title,
+            .tools-title,
+            .resources-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                min-height: auto;
+                padding: 3rem 1rem;
+            }
+
+            .hero-title,
+            .hero-subtitle {
+                font-size: 2rem;
+            }
+
+            .tools-description,
+            .tools-extra {
+                font-size: 1rem;
+            }
+
+            .stats,
+            .tools,
+            .resources {
+                padding: 4rem 1rem;
+            }
+
+            .circular-chart {
+                width: 200px;
+                height: 200px;
+            }
+
+            .circular-chart .percentage {
+                font-size: 2.5rem;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">For healthier students</h1>
+                <p class="hero-subtitle">
+                    Schools, personal problems, for some also work. Sometimes feels natural, others harder. Our purpose is to help students when dealing with overwhelming feelings and clearing minds to break the cycle and start thinking of a solution in a healthier way.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats">
+        <div class="stats-content">
+            <div class="stats-chart">
+                <div class="circular-chart">
+                    <svg width="300" height="300">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FF6B9D;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FF8E9B;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle class="background" cx="150" cy="150" r="120"></circle>
+                        <circle class="progress" cx="150" cy="150" r="120"></circle>
+                    </svg>
+                    <div class="percentage">80%</div>
+                </div>
+            </div>
+            <div class="stats-text">
+                <h2 class="stats-title">It's okay to need help.</h2>
+                <p class="stats-description">
+                    80% of Mexican population never look for mental health advice and attention. Because of traditions, costs or ignorance in the subject.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools">
+        <div class="tools-content">
+            <div class="tools-text">
+                <h2 class="tools-title">Self-awareness toolbox</h2>
+                <p class="tools-description">
+                    College and life can be tough, this toolbox is designed for students as a support in any emotional or mental struggle.
+                </p>
+                <p class="tools-extra">
+                    A preventive mental health toolbox for college students that combines guided self-reflection with anonymous digital insights and peer support.
+                </p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop" alt="Estudiante estresado frente a laptop" class="tools-image">
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources">
+        <div class="resources-content">
+            <h2 class="resources-title">Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=300&fit=crop" alt="My inside's file" class="resource-image">
+                    <h3 class="resource-title">My inside's file</h3>
+                    <p class="resource-description">In collaboration with Therapy Notebooks</p>
+                </div>
+                <div class="resource-card">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=300&fit=crop" alt="Corporal guide" class="resource-image">
+                    <h3 class="resource-title">Corporal guide</h3>
+                    <p class="resource-description">A good, conscious physical reaction will guide a stable feeling.</p>
+                </div>
+                <div class="resource-card">
+                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" alt="Reflexive cards" class="resource-image">
+                    <h3 class="resource-title">Reflexive cards</h3>
+                    <p class="resource-description">Sometimes the obvious is forgotten when other knowledges are prioritized.</p>
+                </div>
+                <div class="resource-card">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop" alt="Self-awareness Hub" class="resource-image">
+                    <h3 class="resource-title">Self-awareness Hub</h3>
+                    <p class="resource-description">Access to a web page with anonymous peers like you.</p>
+                </div>
+                <div class="resource-card">
+                    <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=300&fit=crop" alt="And more" class="resource-image">
+                    <h3 class="resource-title">And more…</h3>
+                    <p class="resource-description">More useful tools for dealing with complicated situations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animación del gráfico circular al hacer scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressCircle = entry.target.querySelector('.progress');
+                    if (progressCircle) {
+                        progressCircle.style.strokeDashoffset = '50.24';
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const chart = document.querySelector('.circular-chart');
+            if (chart) {
+                observer.observe(chart.closest('.stats'));
+            }
+        });
+    </script>
+</body>
+</html>
